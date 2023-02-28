@@ -5,12 +5,12 @@
 npm install
 ```
 
-##Launch local
+## Launch local
 ```
 npm start
 ```
 
-##Build
+## Build
 ```
 npm run build
 ```
