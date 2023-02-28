@@ -28,12 +28,6 @@ class RecipeView extends View {
     });
   }
 
-  createFraction(quantity) {
-    console.log(quantity);
-    const decimal = new Fraction(quantity);
-    return decimal.toFraction(true).toString();
-  }
-
   _generateMarkup() {
     return `<figure class="recipe__fig">
     <img src="${this._data.image}" alt="${
