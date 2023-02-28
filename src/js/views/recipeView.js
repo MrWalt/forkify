@@ -1,6 +1,6 @@
 import View from "./View.js";
 import icons from "url:../../img/icons.svg";
-import { Fraction } from "fractional";
+import { Fraction } from "fraction.js";
 
 class RecipeView extends View {
   _parentElement = document.querySelector(".recipe");
@@ -26,6 +26,12 @@ class RecipeView extends View {
       if (!btn) return;
       handler();
     });
+  }
+
+  createFraction(quantity) {
+    console.log(quantity);
+    const decimal = new Fraction(quantity);
+    return decimal.toFraction(true).toString();
   }
 
   _generateMarkup() {
@@ -120,13 +126,14 @@ class RecipeView extends View {
   }
 
   _generateMarkupIngredient(ing) {
+    const decimal = new Fraction(ing.quantity);
+    const quantity = decimal.toFraction(true);
+
     return `<li class="recipe__ingredient">
         <svg class="recipe__icon">
           <use href="${icons}.svg#icon-check"></use>
         </svg>
-        <div class="recipe__quantity">${
-          ing.quantity ? new Fraction(ing.quantity).toString() : ""
-        }</div>
+        <div class="recipe__quantity">${+quantity === 0 ? "" : quantity}</div>
         <div class="recipe__description">
           <span class="recipe__unit">${ing.unit}</span>
           ${ing.description}
