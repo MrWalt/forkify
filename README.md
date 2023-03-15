@@ -1,4 +1,6 @@
 # Forkify
+This is a small app I created during the last parts of my JS studies
+
 
 ## Project setup
 ```
